@@ -1,11 +1,10 @@
-import { createApp } from 'vue';
+import './styles/main.less';
 
 import App from './App.vue';
 import plugin from './plugins';
 import router from './router';
 import pinia from './stores';
 
-import './styles/main.less';
 const app = createApp(App);
 
 app.use(pinia);

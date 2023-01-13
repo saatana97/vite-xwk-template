@@ -4,6 +4,9 @@ import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { loadEnv, type ConfigEnv } from 'vite';
 
 // https://vitejs.dev/config/
@@ -36,6 +39,33 @@ export default (configEnv: ConfigEnv) => {
             vue(),
             vueJsx({ transformOn: true }),
             svgLoader(),
+            AutoImport({
+                include: [/\.[jt]sx?$/, /\.vue\??/],
+                imports: [
+                    'vue',
+                    'vue-router',
+                    'pinia',
+                    {
+                        // import { default as axios } from 'axios',
+                        axios: [['default', 'axios']],
+                    },
+                ],
+                eslintrc: {
+                    enabled: true,
+                    filepath: './src/.eslintrc',
+                    globalsPropValue: true,
+                },
+                dts: 'src/auto-imports.d.ts',
+            }),
+            Components({
+                dirs: ['src/components'],
+                extensions: ['vue', 'jsx', 'tsx', 'js', 'ts'],
+                deep: true,
+                resolvers: [ElementPlusResolver()],
+                dts: 'src/components.d.ts',
+                include: [/\.tsx$/, /\.jsx$/, /\.ts$/, /\.js$/, /\.vue$/, /\.vue\?vue/],
+                exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/],
+            }),
             legacy({
                 targets: ['defaults', 'not IE 11', 'chrome 52'],
             }),
