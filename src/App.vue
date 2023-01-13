@@ -1,11 +1,5 @@
 <template>
-    <el-config-provider
-        :button="config.button"
-        :locale="config.locale"
-        :message="config.message"
-        :size="config.size"
-        :z-index="config.zIndex"
-    >
+    <el-config-provider v-bind="config">
         <Suspense>
             <router-view />
         </Suspense>
