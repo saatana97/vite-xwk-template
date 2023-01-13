@@ -1,6 +1,5 @@
 import useAuthStore from '@/stores/auth';
 import type { AxiosRequestConfig, AxiosResponse, HttpStatusCode } from 'axios';
-import qs from 'qs';
 interface CommonResponse<T> {
     code: HttpStatusCode;
     msg: string;

@@ -13,7 +13,7 @@ import { loadEnv, type ConfigEnv } from 'vite';
 export default (configEnv: ConfigEnv) => {
     const env = loadEnv(configEnv.mode, process.cwd());
     console.info(configEnv);
-    console.info(env);
+    console.table(env);
     return {
         base: env.VITE_BASE_URL,
         server: {
@@ -48,6 +48,8 @@ export default (configEnv: ConfigEnv) => {
                     {
                         // import { default as axios } from 'axios',
                         axios: [['default', 'axios']],
+                        // import { default as qs } from 'qs',
+                        qs: [['default', 'qs']],
                     },
                 ],
                 eslintrc: {

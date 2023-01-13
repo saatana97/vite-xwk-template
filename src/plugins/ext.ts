@@ -1,8 +1,7 @@
+import { dayjs } from 'element-plus';
 export default () => {};
 Date.prototype.fmt = function (format = 'YYYY-MM-DD HH:mm:ss') {
-    // TODO 推荐使用dayjs，可以从element-plus中引入
-    // return dayjs(this).format(format);
-    throw new Error('not implement! ' + format);
+    return dayjs(this).format(format);
 };
 Array.prototype.groupBy = function <T>(by: string) {
     const _this = this;
