@@ -11,6 +11,7 @@
                 <svg-icon height="64" name="logo" width="64" />
             </el-card>
         </el-space>
+        <el-button type="primary">点我也没用</el-button>
     </el-card>
 </template>
 <script setup lang="ts">
