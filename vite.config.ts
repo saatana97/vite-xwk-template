@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url';
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import svgLoader from 'vite-svg-loader';
 import { loadEnv, type ConfigEnv } from 'vite';
 
 // https://vitejs.dev/config/
@@ -34,6 +35,7 @@ export default (configEnv: ConfigEnv) => {
         plugins: [
             vue(),
             vueJsx({ transformOn: true }),
+            svgLoader(),
             legacy({
                 targets: ['defaults', 'not IE 11', 'chrome 52'],
             }),
