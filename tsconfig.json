@@ -4,7 +4,9 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "~/*": ["./src/assets/*"],
+            "!/*": ["./src/types/*"]
         },
         "lib": ["ESNext", "DOM"],
         "types": ["node"]

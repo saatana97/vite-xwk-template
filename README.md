@@ -6,6 +6,8 @@
 -   [Vue3](https://cn.vuejs.org/)
 -   [Typescript](https://www.tslang.cn)
 -   [VueRouter](https://router.vuejs.org/)
+-   [Axios](https://www.axios-http.cn/)
+-   [qs](https://github.com/ljharb/qs)
 -   [Pinia](https://pinia.web3doc.top/)
 -   [Eslint](https://eslint.bootcss.com/)
 -   [Prettier](https://prettier.io/)

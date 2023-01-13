@@ -1,38 +1,11 @@
 import useAuthStore from '@/stores/auth';
-import type { AxiosResponse, HttpStatusCode } from 'axios';
-import axios from 'axios';
+import axios, { HttpStatusCode, type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import qs from 'qs';
-
-interface Res {
+interface CommonResponse<T> {
     code: HttpStatusCode;
     msg: string;
-    data?: Record<string, unknown> | null;
+    data?: T;
 }
-
-const handleResponse = async ({
-    config: requestConfig,
-    data,
-    status,
-}: AxiosResponse<Res | undefined>): Promise<Record<string, unknown> | Res | null | undefined> => {
-    const code = data?.code || status;
-    console.info('[api]', code, requestConfig.method, requestConfig.url, data?.data);
-    if (code !== 200) {
-        if (data) {
-            data.data = null;
-        }
-        switch (code) {
-            case 401:
-            case 403:
-                useAuthStore().logout();
-                break;
-            default:
-                console.error(data?.msg || '服务器异常');
-                break;
-        }
-    }
-    return data;
-};
-
 const instance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
     timeout: import.meta.env.VITE_API_TIMEOUT,
@@ -40,7 +13,6 @@ const instance = axios.create({
         'Content-Type': 'application/json;charset=UTF-8',
     },
 });
-
 instance.interceptors.request.use(
     (config) => {
         const token = useAuthStore().token;
@@ -68,25 +40,64 @@ instance.interceptors.request.use(
         }
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
-    }
+    (error) => Promise.reject(error)
 );
 
 instance.interceptors.response.use(
     (response) => {
-        handleResponse(response as AxiosResponse<Res, unknown>);
+        const code = response.data?.code || response.status;
+        console.info('[api]', code, response.config.method, response.config.url, response.data?.data);
+        if (code !== 200) {
+            switch (code) {
+                case 401:
+                case 403:
+                    useAuthStore().logout();
+                    break;
+                default:
+                    console.error(response.data?.msg || '服务器异常');
+                    break;
+            }
+        }
         return response;
     },
-    (error) => {
-        let res = null;
-        if (!error.response) {
-            console.error(error.message || '请求失败');
-        } else {
-            res = handleResponse(error.response);
-        }
-        return res;
-    }
+    (error) => Promise.reject(error)
 );
-
-export default instance;
+const request = async <Res, Req = unknown>(config: AxiosRequestConfig<Req>) => {
+    const res = await instance.request<CommonResponse<Res>, AxiosResponse<Res>, Req>(config);
+    return res.data;
+};
+const get = <Res, Req = never>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
+    request<Res, Req>({
+        method: 'get',
+        url,
+        params,
+        ...config,
+    });
+const post = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
+    request<Res, Req>({
+        method: 'post',
+        url,
+        data,
+        ...config,
+    });
+const put = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
+    request<Res, Req>({
+        method: 'put',
+        url,
+        data,
+        ...config,
+    });
+const del = <Res, Req = unknown>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
+    request<Res, Req>({
+        method: 'delete',
+        url,
+        params,
+        ...config,
+    });
+export default {
+    request,
+    get,
+    post,
+    put,
+    del,
+};
