@@ -1,8 +1,5 @@
-import { createApp } from 'vue';
-import './styles/main.less';
-
-import App from './App.vue';
-
-const app = createApp(App);
-
-app.mount('#app');
+export const useLib = () => {
+    const lib = 'Hello Lib';
+    console.info(lib);
+    return lib;
+};
