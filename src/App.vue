@@ -1,24 +1,9 @@
 <template>
-    <el-config-provider v-bind="config">
-        <Suspense>
-            <router-view />
-        </Suspense>
-    </el-config-provider>
+    <Suspense>
+        <router-view />
+    </Suspense>
 </template>
 
-<script setup lang="ts">
-    import zh from 'element-plus/lib/locale/lang/zh-cn';
-    const config = {
-        locale: zh,
-        size: '',
-        zIndex: 300,
-        button: {
-            autoInsertSpace: true,
-        },
-        message: {
-            max: 5,
-        },
-    } as const;
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less" scoped></style>

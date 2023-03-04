@@ -1,7 +1,7 @@
 # vite-xwk-template
 
 > 这是一个 **`Vite` 项目模板**，使用目前前沿技术栈。  
-> 包含了核心依赖库、组件库、代码检查、常用工具库、提高开发效率的插件等。
+> 包含了核心依赖库、代码检查、常用工具库、提高开发效率的插件等。
 
 ## 使用方式
 
@@ -21,7 +21,6 @@ npm run dev
 -   [Axios](https://www.axios-http.cn/) 基于 promise 的网络请求库
 -   [qs](https://github.com/ljharb/qs) 查询字符串分析和字符串化库
 -   [Pinia](https://pinia.web3doc.top/) 您将喜欢使用的 Vue 存储库
--   [ElementPlus](https://element-plus.gitee.io/) 基于 Vue 3，面向设计师和开发者的组件库
 -   [Eslint](https://eslint.bootcss.com/) 可组装的 JavaScript 和 JSX 检查工具
 -   [Prettier](https://prettier.io/) 代码格式化程序
 -   [LintStaged](https://github.com/okonet/lint-staged#readme) 针对暂存的 git 文件运行检查
