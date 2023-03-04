@@ -1,24 +1,7 @@
 <template>
-    <el-config-provider v-bind="config">
-        <Suspense>
-            <router-view />
-        </Suspense>
-    </el-config-provider>
+    <h1>这是一个空模板项目，没有集成任何业务相关库</h1>
 </template>
 
-<script setup lang="ts">
-    import zh from 'element-plus/lib/locale/lang/zh-cn';
-    const config = {
-        locale: zh,
-        size: '',
-        zIndex: 300,
-        button: {
-            autoInsertSpace: true,
-        },
-        message: {
-            max: 5,
-        },
-    } as const;
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less" scoped></style>
