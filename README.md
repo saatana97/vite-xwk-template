@@ -6,7 +6,7 @@
 ## 使用方式
 
 ```
-npx degit saatana97/vite-xwk-template#main my-project
+npx degit saatana97/vite-xwk-template#admin my-project
 cd my-project
 npm install
 npm run dev
