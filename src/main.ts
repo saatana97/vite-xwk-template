@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-import './styles/main.less';
 
 import App from './App.vue';
 
