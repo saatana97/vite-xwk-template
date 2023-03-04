@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import type { XPlugin } from '.';
 /**
  * 复制文本
  * @param {string} content 要复制的内容
@@ -81,9 +81,11 @@ export const dict = (
             .join(',') || opts.default
     );
 };
-export default (app: App) => {
-    app.config.globalProperties.$copy = copy;
-    app.config.globalProperties.$download = download;
-    app.config.globalProperties.$excel = excel;
-    app.config.globalProperties.$dict = dict;
+export const plugin: XPlugin = {
+    install(app) {
+        app.config.globalProperties.$copy = copy;
+        app.config.globalProperties.$download = download;
+        app.config.globalProperties.$excel = excel;
+        app.config.globalProperties.$dict = dict;
+    },
 };
