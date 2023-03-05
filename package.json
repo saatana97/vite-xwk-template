@@ -16,13 +16,14 @@
         "dist",
         "types"
     ],
-    "types": "/types/index.d.ts",
-    "main": "./dist/lib.mjs",
-    "module": "./dist/lib.mjs",
+    "type": "module",
+    "types": "./types/main.d.ts",
+    "main": "./dist/lib.js",
+    "module": "./dist/lib.js",
     "exports": {
         ".": {
-            "import": "./dist/lib.mjs",
-            "require": "./dist/lib.umd.js"
+            "import": "./dist/lib.js",
+            "require": "./dist/lib.cjs"
         }
     },
     "scripts": {
@@ -35,6 +36,7 @@
     },
     "peerDependencies": {},
     "dependencies": {
+        "@types/node": "^18.14.6",
         "lodash": "^4.17.21"
     },
     "devDependencies": {

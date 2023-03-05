@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import { resolve } from 'node:path';
-import visualizer from 'rollup-plugin-visualizer';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { loadEnv, type ConfigEnv, type UserConfig } from 'vite';
+const resolvePath = (str: string) => resolve(__dirname, str);
+console.info(visualizer);
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv) => {
     const env = loadEnv(configEnv.mode, process.cwd());
@@ -11,7 +13,7 @@ export default (configEnv: ConfigEnv) => {
         base: env.VITE_BASE_URL,
         plugins: [
             visualizer({
-                open: true,
+                open: false,
                 gzipSize: true,
             }),
         ],
@@ -19,13 +21,13 @@ export default (configEnv: ConfigEnv) => {
             sourcemap: true,
             copyPublicDir: false,
             lib: {
-                entry: resolve('./src/main.ts'),
+                entry: resolvePath('./src/main.ts'),
                 name: 'Lib',
                 formats: ['cjs', 'es', 'umd'],
                 fileName: 'lib',
             },
             rollupOptions: {
-                input: resolve('./src/main.ts'),
+                input: resolvePath('./src/main.ts'),
                 external: ['lodash'],
                 globals: {
                     lodash: '_',
