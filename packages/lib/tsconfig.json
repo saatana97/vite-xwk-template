@@ -1,0 +1,21 @@
+{
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "lib": ["ESNext", "DOM"],
+        "outDir": "types",
+        "rootDir": "src",
+        "declaration": true,
+        "declarationMap": true,
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true
+    },
+    "references": [
+        {
+            "path": "./tsconfig.config.json"
+        }
+    ]
+}

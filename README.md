@@ -14,6 +14,7 @@ npm run dev
 
 ## 框架依赖
 
+-   [Pnpm](https://pnpm.io/installation) 快速的，节省磁盘空间的包管理工具
 -   [Vite](https://cn.vitejs.dev/) 脚手架
 -   [Vue3](https://cn.vuejs.org/) 渐进式 JavaScript 框架
 -   [Typescript](https://www.tslang.cn) JavaScript 的超集

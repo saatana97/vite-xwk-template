@@ -3,5 +3,7 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true,
         "source.organizeImports": false
-    }
+    },
+    "eslint.enable": true,
+    "eslint.validate": ["javascript", "typescript", "vue", "javascriptreact", "typescriptreact"]
 }
