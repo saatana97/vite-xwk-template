@@ -53,7 +53,7 @@ pnpm dev
 > -   组件库或者其他工具库可以放在`./packages`目录下，本模板中有一个示例库`lib`，名为`@pkgs/lib`
 > -   项目入口或者启动页面可以放在`./apps`目录下，本模板中有一个示例入口`web`，名为`@apps/web`
 > -   使用`pnpm -F @pkgs/lib add lodash`为`lib`项目添加名为`lodash`的依赖，`pnpm -F @pkgs/lib add @types/lodash -D`添加`TS`声明
-> -   使用`pnpm -F @apps/web add @pkgs/lib`为`web`项目添加`lib`依赖，在`./apps/web/package.json`中表示为`"@pkgs/lib": "workspace:^1.0.0"`，也可改为`"@pkgs/lib": "workspace:*"`
+> -   使用`pnpm -F @apps/web add @pkgs/lib`为`web`项目添加`lib`依赖，在`./apps/web/package.json`中表示为`"@pkgs/lib": "workspace:^1.0.0"`
 > -   `packages`下库项目有更改时，应运行`pnpm build`打包编译，`apps`下入口项目引用的是库项目`package.json`的`main`、`module`、`exports`中定义的库入口文件
 > -   如果想要断点调试`packages`下的库项目，通过`apps`入口项目启动是不行的（原因见上一点），库项目中的示例项目（来自于本模板`lib`分支）内置了`index.html`继承了`vue`环境，运行`pnpm -F @pkgs/lib dev`即可启动库项目中的`web`服务进行断点调试
 
