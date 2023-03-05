@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-    import { useLib } from '@pkg/lib';
+    import { useLib } from '@pkgs/lib';
     const lib = useLib();
 </script>
 

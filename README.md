@@ -32,6 +32,7 @@
 npx degit saatana97/vite-xwk-template#monorepo my-project
 cd my-project
 pnpm install
+pnpm --filter @apps/web add @pkgs/lib
 pnpm dev
 ```
 
