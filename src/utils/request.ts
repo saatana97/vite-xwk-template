@@ -1,4 +1,4 @@
-import useAuthStore from '@/stores/auth';
+import { useAuthStore } from '@/stores/auth';
 import type { AxiosRequestConfig, AxiosResponse, HttpStatusCode } from 'axios';
 interface CommonResponse<T> {
     code: HttpStatusCode;
@@ -48,7 +48,6 @@ instance.interceptors.response.use(
         console.info('[api]', code, response.config.method, response.config.url, response.data?.data);
         if (code !== 200) {
             switch (code) {
-                case 401:
                 case 403:
                     useAuthStore().logout();
                     break;
@@ -56,47 +55,41 @@ instance.interceptors.response.use(
                     console.error(response.data?.msg || '服务器异常');
                     break;
             }
+            response.data = undefined;
         }
-        return response;
+        return response.data;
     },
     (error) => Promise.reject(error)
 );
-const request = async <Res, Req = unknown>(config: AxiosRequestConfig<Req>) => {
-    const res = await instance.request<CommonResponse<Res>, AxiosResponse<Res>, Req>(config);
-    return res.data;
+export const request = async <Res, Req = unknown>(config: AxiosRequestConfig<Req>): Promise<Res | undefined> => {
+    const res = await instance.request<CommonResponse<Res>, AxiosResponse<Res> | undefined, Req>(config);
+    return res?.data;
 };
-const get = <Res, Req = never>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
+export const get = <Res, Req = never>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
     request<Res, Req>({
         method: 'get',
         url,
         params,
         ...config,
     });
-const post = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
+export const post = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
     request<Res, Req>({
         method: 'post',
         url,
         data,
         ...config,
     });
-const put = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
+export const put = <Res, Req = unknown>(url: string, data?: Req, config?: AxiosRequestConfig<Req>) =>
     request<Res, Req>({
         method: 'put',
         url,
         data,
         ...config,
     });
-const del = <Res, Req = unknown>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
+export const del = <Res, Req = unknown>(url: string, params?: unknown, config?: AxiosRequestConfig<Req>) =>
     request<Res, Req>({
         method: 'delete',
         url,
         params,
         ...config,
     });
-export default {
-    request,
-    get,
-    post,
-    put,
-    del,
-};

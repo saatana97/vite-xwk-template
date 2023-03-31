@@ -1,4 +1,4 @@
-export default defineStore('auth', () => {
+export const useAuthStore = defineStore('auth', () => {
     const token = ref('');
     const profile = ref({});
     const login = async () => {};
