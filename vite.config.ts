@@ -31,8 +31,6 @@ export default (configEnv: ConfigEnv) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
-                '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
-                '!': fileURLToPath(new URL('./src/types', import.meta.url)),
             },
         },
         plugins: [
