@@ -1,3 +1,5 @@
+## [0.0.2](https://e.coding.net/soul-coder/github/vite-xwk-template/compare/v0.0.1...v0.0.2) (2023-05-10)
+
 ## 0.0.1 (2023-05-10)
 
 ### Bug Fixes
