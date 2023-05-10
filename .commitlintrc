@@ -1,51 +1,52 @@
 {
-  "extends": [
-    "@commitlint/config-conventional"
-  ],
-  "rules": {
-    "type-enum": [
-      2,
-      "always",
-      [
-        "feat",
-        "fix",
-        "doc",
-        "style",
-        "format",
-        "refactor",
-        "test",
-        "revert",
-        "build",
-        "merge",
-        "perf",
-        "conf",
-        "chore"
-      ]
+    "extends": [
+        "@commitlint/config-conventional"
     ],
-    "type-case": [
-      0
-    ],
-    "type-empty": [
-      0
-    ],
-    "scope-empty": [
-      0
-    ],
-    "scope-case": [
-      0
-    ],
-    "subject-full-stop": [
-      0,
-      "never"
-    ],
-    "subject-case": [
-      0,
-      "never"
-    ],
-    "header-max-length": [
-      0,
-      "always",
-      72
-    ]
-  }
+    "rules": {
+        "type-enum": [
+            2,
+            "always",
+            [
+                "release",
+                "feat",
+                "fix",
+                "doc",
+                "style",
+                "format",
+                "refactor",
+                "test",
+                "revert",
+                "build",
+                "merge",
+                "perf",
+                "conf",
+                "chore"
+            ]
+        ],
+        "type-case": [
+            0
+        ],
+        "type-empty": [
+            0
+        ],
+        "scope-empty": [
+            0
+        ],
+        "scope-case": [
+            0
+        ],
+        "subject-full-stop": [
+            0,
+            "never"
+        ],
+        "subject-case": [
+            0,
+            "never"
+        ],
+        "header-max-length": [
+            0,
+            "always",
+            72
+        ]
+    }
 }
