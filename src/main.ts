@@ -1,6 +1,5 @@
-import { now } from 'lodash';
 export const useLib = () => {
     const lib = 'Hello Lib';
-    console.info(lib, now());
+    console.info(lib);
     return lib;
 };
