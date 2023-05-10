@@ -9,16 +9,48 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ lib }}</h1>
+            <h1>{{ value }}</h1>
+            <h2>{{ count() }}</h2>
+            <ul>
+                <li v-for="(item, index) in cards" :key="index" @click="toggle(item)">
+                    <span>{{item}}</span>
+                    <span>{{status(item)}}</span>
+                </li>
+            </ul>
+            <p>123全都有{{status([1,2,3],'and')}}</p>
+            <p>678全都有{{status([6,7,8],'and')}}</p>
+            <p>789全都有{{status([7,8,9],'and')}}</p>
+            <p>123至少有一个{{status([1,2,3],'or')}}</p>
+            <p>678至少有一个{{status([6,7,8],'or')}}</p>
+            <p>789至少有一个{{status([7,8,9],'or')}}</p>
+            <p>123全没有{{status([1,2,3],'not')}}</p>
+            <p>678全没有{{status([6,7,8],'not')}}</p>
+            <p>789全没有{{status([7,8,9],'not')}}</p>
+            <p>123至少没有一个{{status([1,2,3],'xor')}}</p>
+            <p>678至少没有一个{{status([6,7,8],'xor')}}</p>
+            <p>789至少没有一个{{status([7,8,9],'xor')}}</p>
         </div>
         <script type="module">
-            import { useLib } from './src/main.ts';
+            import { createBinaryStatusStore } from './src/main.ts';
             const { createApp, ref } = Vue;
             createApp({
                 setup() {
-                    const lib = useLib();
+                    const value = ref(127);
+                    const cards = Array.from({ length: 10 }, (item, index) => index);
+                    const { active, inactive, toggle, status, count } = createBinaryStatusStore({
+                        value: value.value,
+                        change: (val) => {
+                            value.value = val;
+                        },
+                    });
                     return {
-                        lib,
+                        value,
+                        cards,
+                        active,
+                        inactive,
+                        toggle,
+                        status,
+                        count,
                     };
                 },
             }).mount('#app');
