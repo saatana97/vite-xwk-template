@@ -24,14 +24,12 @@ export default (configEnv: ConfigEnv) => {
                 entry: resolvePath('./src/main.ts'),
                 name: 'Lib',
                 formats: ['cjs', 'es', 'umd'],
-                fileName: 'lib',
+                fileName: 'index',
             },
             rollupOptions: {
                 input: resolvePath('./src/main.ts'),
-                external: ['lodash'],
-                globals: {
-                    lodash: '_',
-                },
+                external: [],
+                globals: {},
             },
         },
     } as UserConfig;

@@ -1,6 +1,6 @@
 {
-    "name": "vite-xwk-template",
-    "version": "1.0.0",
+    "name": "xwk-lib",
+    "version": "0.0.1",
     "keywords": [
         "xwk",
         "vite",
@@ -18,26 +18,23 @@
     ],
     "type": "module",
     "types": "./types/main.d.ts",
-    "main": "./dist/lib.js",
-    "module": "./dist/lib.js",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "exports": {
         ".": {
-            "import": "./dist/lib.js",
-            "require": "./dist/lib.cjs"
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         }
     },
     "scripts": {
         "dev": "vite",
         "preview": "vite preview",
         "build": "tsc && vite build",
+        "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+        "release": "bumpp package.json --commit \"release: v%s\" --push --all --tag && pnpm run build && pnpm publish",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix --ignore-path .gitignore",
         "prettier": "prettier --write ./**/*.{ts,tsx,js,jsx,css,json,md}",
         "prepare": "husky install"
-    },
-    "peerDependencies": {},
-    "dependencies": {
-        "@types/node": "^18.14.6",
-        "lodash": "^4.17.21"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.4.1",
@@ -45,6 +42,8 @@
         "@types/lodash": "^4.14.191",
         "@typescript-eslint/eslint-plugin": "^5.54.0",
         "@typescript-eslint/parser": "^5.54.0",
+        "bumpp": "^9.1.0",
+        "conventional-changelog": "^3.1.25",
         "eslint": "^8.35.0",
         "eslint-plugin-prettier": "^4.2.1",
         "husky": "^8.0.3",

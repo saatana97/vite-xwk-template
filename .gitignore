@@ -4,3 +4,4 @@ types
 stats.html
 *.local
 package-lock.json
+pnpm-lock.yaml
