@@ -6,7 +6,7 @@
             "@/*": ["./src/*"]
         },
         "lib": ["ESNext", "DOM"],
-        "types": ["node"],
+        "types": [],
         "outDir": "types",
         "rootDir": "src",
         "declaration": true,
