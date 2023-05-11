@@ -26,9 +26,11 @@
             <p>123全没有{{status([1,2,3],'not')}}</p>
             <p>678全没有{{status([6,7,8],'not')}}</p>
             <p>789全没有{{status([7,8,9],'not')}}</p>
-            <p>123至少没有一个{{status([1,2,3],'xor')}}</p>
-            <p>678至少没有一个{{status([6,7,8],'xor')}}</p>
-            <p>789至少没有一个{{status([7,8,9],'xor')}}</p>
+            <p>123仅有一部分{{status([1,2,3],'xor')}}</p>
+            <p>678仅有一部分{{status([6,7,8],'xor')}}</p>
+            <p>789仅有一部分{{status([7,8,9],'xor')}}</p>
+            <p>6仅有一部分{{status([6],'xor')}}</p>
+            <p>7仅有一部分{{status([7],'xor')}}</p>
         </div>
         <script type="module">
             import { createBinaryStatusStore } from './src/main.ts';
