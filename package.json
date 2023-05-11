@@ -17,12 +17,14 @@
         "types"
     ],
     "type": "module",
-    "types": "./types/main.d.ts",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
+    "main": "dist/index.mjs",
+    "module": "dist/index.mjs",
+    "types": "types/index.d.ts",
+    "browser": "dist/index.js",
     "exports": {
         ".": {
-            "import": "./dist/index.js",
+            "types": "./types/index.d.ts",
+            "import": "./dist/index.mjs",
             "require": "./dist/index.cjs"
         }
     },

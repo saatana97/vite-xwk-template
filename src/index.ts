@@ -22,19 +22,19 @@ export enum StatusLogic {
     /**
      * 与，全部激活
      */
-    AND,
+    AND = 'and',
     /**
      * 或，至少有一个激活
      */
-    OR,
+    OR = 'or',
     /**
      * 非，全部没激活
      */
-    NOT,
+    NOT = 'not',
     /**
      * 异或，激活和未激活都有
      */
-    XOR,
+    XOR = 'xor',
 }
 const BINARY_MAX_LENGTH = Number.MAX_SAFE_INTEGER.toString(2).length;
 const ACTIVED_REG = /1/g;

@@ -1,6 +1,8 @@
 {
-    "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
+    "include": ["vite.config.*", "vitest.config.*", "package.json"],
     "compilerOptions": {
-        "composite": true
+        "composite": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true
     }
 }

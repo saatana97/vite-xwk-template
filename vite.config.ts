@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-import { resolve } from 'node:path';
+import { basename, resolve } from 'node:path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { loadEnv, type ConfigEnv, type UserConfig } from 'vite';
+import packageJson from './package.json';
 const resolvePath = (str: string) => resolve(__dirname, str);
-console.info(visualizer);
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv) => {
     const env = loadEnv(configEnv.mode, process.cwd());
@@ -21,15 +21,15 @@ export default (configEnv: ConfigEnv) => {
             sourcemap: true,
             copyPublicDir: false,
             lib: {
-                entry: resolvePath('./src/main.ts'),
-                name: 'Lib',
-                formats: ['cjs', 'es', 'umd'],
-                fileName: 'index',
-            },
-            rollupOptions: {
-                input: resolvePath('./src/main.ts'),
-                external: [],
-                globals: {},
+                formats: ['es', 'cjs', 'umd'],
+                fileName: (format) => {
+                    if (format === 'es') return basename(packageJson.module);
+                    if (format === 'umd') return basename(packageJson.browser);
+                    if (format === 'cjs') return basename(packageJson.exports['.'].require);
+                    return `${packageJson.name}.${format}`;
+                },
+                entry: resolvePath('./src/index.ts'),
+                name: packageJson.name.replace(/-(\w)/gi, (_, v) => v.toUpperCase()),
             },
         },
     } as UserConfig;
