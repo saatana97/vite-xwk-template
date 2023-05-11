@@ -36,15 +36,20 @@ export enum StatusLogic {
      */
     XOR = 'xor',
 }
-const BINARY_MAX_LENGTH = Number.MAX_SAFE_INTEGER.toString(2).length;
 const ACTIVED_REG = /1/g;
 /**
- * 创建一个二进制状态存储器，只支持两种状态true/false，最多只能保存54个状态值（数字精度问题）
+ * 状态存储最大数量
+ */
+export const BINARY_MAX_LENGTH = 31;
+// export const BINARY_MAX_LENGTH = Number.MAX_SAFE_INTEGER.toString(2).length;
+/**
+ * 创建一个二进制状态存储器，只支持两种状态true/false，最多只能保存 {@link BINARY_MAX_LENGTH} 个状态值（数字精度问题）
+ * @borrows BINARY_MAX_LENGTH
  * @param options
  * @returns
  */
-export const createBinaryStatusStore = (options: BinaryStatusStoreOption) => {
-    const { value: defaultValue, change: changeFunc, repeat: repeatFunc } = options;
+export const useBinaryStateMachine = (options?: BinaryStatusStoreOption) => {
+    const { value: defaultValue, change: changeFunc, repeat: repeatFunc } = options ?? {};
     let store = defaultValue ?? 0;
     function emits(func?: (...args: unknown[]) => void, ...args: unknown[]) {
         try {
@@ -69,7 +74,7 @@ export const createBinaryStatusStore = (options: BinaryStatusStoreOption) => {
      * 获取处于激活状态数量
      */
     function count() {
-        return Number(store).toString(2).match(ACTIVED_REG).length;
+        return Number(store).toString(2).match(ACTIVED_REG)?.length ?? 0;
     }
     /**
      * 切换激活状态

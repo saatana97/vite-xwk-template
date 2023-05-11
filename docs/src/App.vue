@@ -72,13 +72,14 @@
 
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { createBinaryStatusStore, StatusLogic } from '../../src/index';
-    const value = ref(127);
-    const cards = Array.from({ length: 10 }, (item, index) => index);
-    const { active, inactive, toggle, status, count } = createBinaryStatusStore({
+    import { BINARY_MAX_LENGTH, StatusLogic, useBinaryStateMachine } from '../../src/index';
+    const value = ref(Number('0b' + '1'.repeat(BINARY_MAX_LENGTH)));
+    const cards = Array.from({ length: BINARY_MAX_LENGTH }, (item, index) => index);
+    const { active, inactive, toggle, status, count } = useBinaryStateMachine({
         value: value.value,
-        change: (val) => {
+        change: (val, old) => {
             value.value = val;
+            console.info(old, val);
         },
     });
 </script>
