@@ -19,7 +19,6 @@ export default (configEnv: ConfigEnv) => {
         ],
         build: {
             sourcemap: true,
-            copyPublicDir: false,
             lib: {
                 formats: ['es', 'cjs', 'umd'],
                 fileName: (format) => {

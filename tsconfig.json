@@ -1,5 +1,5 @@
 {
-    "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+    "include": ["env.d.ts", "src/**/*", "docs/**/*"],
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
@@ -8,7 +8,7 @@
         "lib": ["ESNext", "DOM"],
         "types": [],
         "outDir": "types",
-        "rootDir": "src",
+        "rootDirs": ["src", "docs"],
         "declaration": true,
         "declarationMap": true,
         "emitDeclarationOnly": true,
