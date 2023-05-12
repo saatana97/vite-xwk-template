@@ -1,13 +1,13 @@
 {
     "extends": "@vue/tsconfig/tsconfig.web.json",
-    "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+    "include": ["env.d.ts", "src/**/*"],
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"]
         },
         "lib": ["ESNext", "DOM"],
-        "types": ["node"]
+        "ignoreDeprecations": "5.0"
     },
 
     "references": [

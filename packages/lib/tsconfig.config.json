@@ -2,7 +2,7 @@
     "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
     "compilerOptions": {
         "composite": true,
-        "types": ["node"],
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "ignoreDeprecations": "5.0"
     }
 }
