@@ -3,7 +3,7 @@ import { basename, resolve } from 'node:path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { loadEnv, type ConfigEnv, type UserConfig } from 'vite';
 import packageJson from './package.json';
-const resolvePath = (str: string) => resolve(__dirname, str);
+const resolvePath = (str: string) => resolve(process.cwd(), str);
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv) => {
     const env = loadEnv(configEnv.mode, process.cwd());
