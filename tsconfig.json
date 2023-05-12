@@ -12,7 +12,8 @@
         "declaration": true,
         "declarationMap": true,
         "emitDeclarationOnly": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "ignoreDeprecations": "5.0"
     },
     "references": [
         {

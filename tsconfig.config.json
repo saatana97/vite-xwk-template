@@ -1,7 +1,8 @@
 {
-    "include": ["vite.config.*", "vitest.config.*", "package.json"],
+    "include": ["vite.config.*", "package.json"],
     "compilerOptions": {
         "composite": true,
+        "ignoreDeprecations": "5.0",
         "resolveJsonModule": true,
         "esModuleInterop": true
     }
