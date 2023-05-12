@@ -2,6 +2,7 @@ node_modules
 dist
 *.local
 package-lock.json
+pnpm-lock.yaml
 src/.eslintrc
 src/auto-imports.d.ts
 src/components.d.ts
